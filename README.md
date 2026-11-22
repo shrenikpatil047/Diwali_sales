@@ -52,14 +52,14 @@ The same analysis is done in **two tools**, Python and SQL, and the results matc
 
 ## Screenshots
 **Chart 1: Sales by gender**
-<img width="900" height="1080" alt="image" src="https://github.com/user-attachments/assets/2436a7d3-113a-46ab-ace5-09986a6a8df4" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/2436a7d3-113a-46ab-ace5-09986a6a8df4" />
 **Chart 2: Top 10 states by sales**
-<img width="900" height="1080" alt="image" src="https://github.com/user-attachments/assets/9c7b65fd-c5da-492b-be4f-fd9b7dbb39bf" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/9c7b65fd-c5da-492b-be4f-fd9b7dbb39bf" />
 
 **Query 1: Sales by gender**
-<img width="900" height="1080" alt="image" src="https://github.com/user-attachments/assets/359d36e4-49d0-41e9-a6ed-295803607746" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/359d36e4-49d0-41e9-a6ed-295803607746" />
 **Query 2: Top 5 states**
-<img width="900" height="1080" alt="image" src="https://github.com/user-attachments/assets/ebf523f8-1d1a-4c69-8487-97a0eb150033" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/ebf523f8-1d1a-4c69-8487-97a0eb150033" />
 
 
 ## How to Run
