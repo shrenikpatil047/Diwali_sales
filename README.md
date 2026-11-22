@@ -1,88 +1,81 @@
-Diwali Sales Analysis
+# Diwali Sales Analysis | Python + MySQL
 
-Project Overview
+Exploratory analysis of Diwali sales data to find **who buys the most, where, and what**.
+The same analysis is done in **two tools**, Python and SQL, and the results match.
 
-This project focuses on analyzing Diwali sales data using Python to identify customer purchasing patterns, sales trends, and business insights. The analysis helps understand customer behavior and provides insights that can support business decision-making.
+## Project Overview
+- **Dataset:** 11,251 records, 15 columns (11,239 rows after cleaning)
+- **Goal:** understand customer behavior and find the strongest buyer segments to support marketing decisions
+- **Approach:** clean the data, analyze it, visualize it in Python, then repeat the analysis in SQL
 
-Objectives
+## Tools & Technologies
+| Area | Tools |
+|---|---|
+| Python | Pandas, NumPy, Matplotlib, Seaborn, Jupyter Notebook |
+| SQL | MySQL 8.0, MySQL Workbench |
+| SQL concepts | GROUP BY, CASE WHEN, CTEs, window functions (RANK, DENSE_RANK, ROW_NUMBER) |
 
-- Analyze customer purchasing behavior during the Diwali season.
-- Identify sales trends across different customer demographics.
-- Understand which product categories generate higher sales.
-- Explore customer preferences based on gender, age group, occupation, and location.
-- Generate actionable insights to improve sales and marketing strategies.
+## Repository Files
+| File | Description |
+|---|---|
+| `Diwali_Sales_Analysis.ipynb` | Python analysis with charts |
+| `sql/Diwali_Sales_Analysis_MySQL.sql` | SQL version of the same analysis |
+| `Diwali Sales Data.csv` | Dataset |
 
-Dataset
+## Data Cleaning
+- Dropped two completely empty columns (`Status`, `unnamed1`)
+- Removed 12 rows with a missing `Amount`
+- Renamed `Age Group` to `age_group` for SQL
 
-The project uses the Diwali Sales Dataset, which contains customer and purchase information.
+## Key Insights
+- **Women** generate about **70%** of total sales (7,832 buyers vs 3,407 men).
+- The **26-35** age group spends the most (about ₹4.26 crore), followed by 36-45 and 18-25.
+- **Uttar Pradesh, Maharashtra and Karnataka** are the top 3 states by orders and sales.
+- Most buyers are **unmarried** (6,518 vs 4,721 married).
+- Top occupations by sales: **IT Sector, Healthcare and Aviation**.
+- **Food** is the top product category by sales, followed by Clothing & Apparel and Electronics & Gadgets.
+- The **Central** zone generates the most sales.
 
-Dataset Details:
+## Python vs SQL
+| Question | Python | SQL |
+|---|---|---|
+| Sales by gender | `groupby('Gender')['Amount'].sum()` | `GROUP BY gender` + `SUM(amount)` |
+| Top 10 states | `.sort_values().head(10)` | `ORDER BY ... LIMIT 10` |
+| Drop missing values | `df.dropna()` | `DELETE ... WHERE amount IS NULL` |
+| Top 3 categories per zone | not covered | CTE + `ROW_NUMBER() OVER (PARTITION BY zone ...)` |
 
-- Total Records: 11,251
-- Total Columns: 15
-- File Format: CSV
+## Advanced SQL Queries
+- Top 3 product categories in each zone (CTE + `ROW_NUMBER`)
+- Top 10 customers by total spend (`DENSE_RANK`)
+- State ranking and cumulative % of sales (`RANK`, running `SUM() OVER`)
+- Best buyer segments by gender + age group + marital status
 
-Tools & Technologies
+## Screenshots
+**Chart 1: replace this with what it shows, e.g. Sales by gender**
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/2436a7d3-113a-46ab-ace5-09986a6a8df4" />
+**Chart 2: e.g. Top 10 states by sales**
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/9c7b65fd-c5da-492b-be4f-fd9b7dbb39bf" />
 
-- Python
-- Jupyter Notebook
-- Pandas
-- NumPy
-- Matplotlib
-- Seaborn
+**Query 1: e.g. Sales by gender**
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/359d36e4-49d0-41e9-a6ed-295803607746" />
+**Query 2: e.g. Top 5 states**
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/ebf523f8-1d1a-4c69-8487-97a0eb150033" />
 
-Project Workflow
 
-1. Importing Python libraries.
-2. Loading the dataset using Pandas.
-3. Exploring the dataset.
-4. Data cleaning and preprocessing.
-5. Exploratory Data Analysis (EDA).
-6. Data visualization.
-7. Identifying key insights and trends.
-
-Key Analysis Areas
-
-- Gender-wise purchasing behavior
-- Age group-wise sales analysis
-- State-wise sales performance
-- Occupation-wise customer analysis
-- Product category analysis
-- Marital status and purchasing patterns
-
-Key Insights
-
-The analysis explores customer purchasing patterns and sales performance across different demographic groups and product categories.
-
-The findings can help businesses:
-
-- Understand customer preferences.
-- Identify important customer segments.
-- Improve marketing strategies.
-- Make better data-driven decisions.
-
-Project Files
-
-- "Diwali_Sales_Analysis.ipynb" — Jupyter Notebook containing Python code and analysis.
-- "Diwali Sales Data.csv" — Dataset used for the analysis.
-
-How to Run the Project
-
+## How to Run
+**Python**
 1. Clone this repository.
-2. Install the required Python libraries.
-3. Open the Jupyter Notebook.
-4. Run the notebook cells sequentially.
+2. Run `pip install pandas numpy matplotlib seaborn jupyter`
+3. Open `Diwali_Sales_Analysis.ipynb` and run the cells in order.
 
-Install Required Libraries
+**SQL**
+1. Import `Diwali Sales Data.csv` into MySQL as a table named `diwali_sales`.
+2. Open `sql/Diwali_Sales_Analysis_MySQL.sql` in MySQL Workbench.
+3. Run the queries one section at a time.
 
-pip install pandas numpy matplotlib seaborn jupyter
+## Conclusion
+Women aged 26-35 from Uttar Pradesh, Maharashtra and Karnataka are the strongest buyer segment. Marketing should focus on Food, Clothing and Electronics for this group.
 
-Conclusion
-
-This project demonstrates the use of Python for data cleaning, exploratory data analysis, and data visualization. It provides practical experience in analyzing real-world sales data and extracting meaningful business insights.
-
-Author
-
-Shrenik Sachin Patil
-
+## Author
+**Shrenik Sachin Patil**
 Aspiring Data Analyst
